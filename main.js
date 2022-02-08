@@ -28,12 +28,16 @@ const CONFETTI_ARGS = [
   },
 ];
 
-function makeItRain() {
-  jsConfetti.addConfetti(getRandomArray(CONFETTI_ARGS));
+function makeItRain(idx = null) {
+  const args =
+    typeof idx === 'number'
+      ? CONFETTI_ARGS[idx]
+      : getRandomArray(CONFETTI_ARGS);
+  jsConfetti.addConfetti(args);
 }
 
 const timeoutId = setTimeout(() => {
-  makeItRain();
+  makeItRain(0);
 }, 1000);
 
 const fuImg = document.getElementById('fuimg');
